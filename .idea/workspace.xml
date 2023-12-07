@@ -7,7 +7,14 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e8622a0-f16f-4b37-b042-08c5dc75f217" name="Changes" comment="" />
+    <list default="true" id="6e8622a0-f16f-4b37-b042-08c5dc75f217" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/commit_manager/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conductor/mod.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conductor/transaction.rs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/macro.rs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +28,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MacroExpansionManager">
@@ -38,7 +50,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "conductor",
     "last_opened_file_path": "/Users/0xjanus/Documents/AliceGroup/alicedb",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -95,7 +107,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701946524267</updated>
-      <workItem from="1701946527510" duration="2568000" />
+      <workItem from="1701946527510" duration="4323000" />
     </task>
     <servers />
   </component>
