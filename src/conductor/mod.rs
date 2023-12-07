@@ -15,20 +15,14 @@ impl Conductor {
         Conductor { transactions: transactions_vec }
     }
 
-    pub fn push_back(&mut self, transaction: Transaction) -> DefaultResponse {
-        return match self.transactions.push(transaction) {
-            Ok(_) => Ok(()),
-            Err(why) => panic!("Cant add transaction.  {:?}", why.kind()),
-        };
+    pub fn push_back(&mut self, transaction: Transaction) {
+        self.transactions.push(transaction);
     }
 
-    pub fn delete_first(&mut self,) -> DefaultResponse {
-        return match self.transactions.pop() {
-            Ok(_) => Ok(()),
-            Err(why) => panic!("Cant delete first transaction.  {:?}", why.kind()),
-        };
+    pub fn delete_first(&mut self,) {
+        self.transactions.pop();
     }
-    fn spawn_threads(&mut self) -> DefaultResponse {
-        Ok(())
+    fn spawn_threads(&mut self) {
+        todo!();
     }
 }
