@@ -1,9 +1,6 @@
 use crate::conductor::transaction::Transaction;
 use crate::alice_fs::*;
 
-pub fn create_commits_file() {
-    create_file("database_name.cm.adb");
-}
 
 pub fn commit(transaction: Transaction) {
     let data = format!("{} - {} - {}", transaction.tid, transaction.cmd, transaction.timestamp);

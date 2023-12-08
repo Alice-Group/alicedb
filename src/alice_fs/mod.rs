@@ -8,8 +8,6 @@ use std::path::{PathBuf, Path};
 use std::fs::{OpenOptions};
 use std::io::{self, prelude::*, BufReader, SeekFrom};
 
-use crate::loguru;
-
 
 pub fn create_dir(dirname: &str) -> Result<(), Box<dyn Error>> {
     match fs::create_dir(dirname) {
@@ -36,7 +34,7 @@ pub fn create_file(filepath: &str) -> Result<File, Box<dyn Error>> {
 }
 
 
-#[loguru(Debug)]
+
 pub fn write_into_file(filepath: &str, data: String) {
     let k = OpenOptions::new()
         .write(true)
