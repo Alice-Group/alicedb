@@ -1,14 +1,12 @@
 [package]
-name = "alicedb"
+name = "logger_macro"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
+[lib]
+proc-macro = true
+
 [dependencies]
 chrono = "0.4.31"
-logger_macro = { path = "./src/logger_macro" }
-
-
-[logger_macro]
-proc-macro = true
