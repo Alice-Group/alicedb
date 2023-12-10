@@ -7,8 +7,3 @@ edition = "2021"
 
 [dependencies]
 chrono = "0.4.31"
-logger_macro = { path = "./src/logger_macro" }
-
-
-[logger_macro]
-proc-macro = true
