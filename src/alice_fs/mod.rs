@@ -1,4 +1,14 @@
-
+//! Alice FS - file manager for alicedb project.
+//! With this mod you can easly use functions for controlling your filesystem.
+//!
+//! TODO:
+//!     [ ] - New names for functions.
+//!     [ ] - Type for Result<Vec<PathBuf>, Box<dyn Error>>.
+//!     [ ] - Comments for functions.
+//!     [ ] - New function that writes data to last line.
+//!
+//! FIXME:
+//!     [ ] - `write_into_files`.
 
 use std::fs::File;
 use std::io::prelude::*;
@@ -7,6 +17,8 @@ use std::fs;
 use std::path::{PathBuf, Path};
 use std::fs::{OpenOptions};
 use std::io::{self, prelude::*, BufReader, SeekFrom};
+
+
 
 
 pub fn create_dir(dirname: &str) -> Result<(), Box<dyn Error>> {

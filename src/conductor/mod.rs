@@ -1,4 +1,3 @@
-
 pub mod transaction;
 use transaction::Transaction;
 use std::error::Error;

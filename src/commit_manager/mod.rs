@@ -1,3 +1,5 @@
+//! Commit users actions to file. Like log but not log.
+
 use crate::conductor::transaction::Transaction;
 use crate::alice_fs::*;
 
