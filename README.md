@@ -1,1 +1,1 @@
-![alt text](./docs/alice_github_banner.png)
+![alt text](https://github.com/Alice-Group/alicedb/blob/conductor/docs/alice_github_banner.png)
