@@ -8,4 +8,4 @@ description = "Database for big data."
 
 [dependencies]
 chrono = "0.4.31"
-cacher = { git = "https://github.com/Alice-Group/Cacher.git", branch = "main" }
+cacher = { git = "https://github.com/Alice-Group/cacher.git", branch = "main" }
