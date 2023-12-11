@@ -1,0 +1,27 @@
+{
+  "alicedb": {
+    "alice_server": {
+      "run": false,
+      "host": "127.0.0.1",
+      "port": 8080
+    },
+    "backer": {
+      "run": false,
+      "path_to_database_bk": "~/Desktop/BACKUP",
+      "path_to_cache_bk": "~/Desktop/BACKUP_CACHE"
+    },
+    "journalist": {
+      "run": true,
+      "path_to_logs": "~/Desktop/LOGS",
+      "level": "info"
+    },
+    "cacher": {
+      "capacity": "inf",
+      "server": {
+        "run": false,
+        "host": "127.0.0.1",
+        "port": 8081
+      }
+    }
+  }
+}
