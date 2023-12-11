@@ -1,7 +1,7 @@
 workspace = { members = ["src/journalist"] }
 [package]
 name = "alicedb"
-version = "0.1.2"
+version = "0.2.0"
 edition = "2021"
 license = "MIT"
 description = "Database for big data."
@@ -13,3 +13,5 @@ cacher = { git = "https://github.com/Alice-Group/cacher.git", branch = "main" }
 journalist = { git = "https://github.com/Alice-Group/journalist.git", branch = "main" }
 log = "0.4.20"
 env_logger = "0.10.1"
+serde_json = "1.0.108"
+serde = { version = "1.0.193", features = ["derive"] }

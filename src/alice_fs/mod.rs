@@ -18,8 +18,8 @@ use std::fs;
 use std::path::{PathBuf, Path};
 use std::fs::{OpenOptions};
 use std::io::{self, prelude::*, BufReader, SeekFrom};
-
-
+use serde::{Deserialize};
+use crate::configurator::Root;
 
 
 pub fn create_dir(dirname: &str) -> Result<(), Box<dyn Error>> {
@@ -116,10 +116,11 @@ pub fn read_file(path_to_table: String) -> Result<Vec<Vec<String>>, Box<dyn Erro
 
 }
 
-pub fn normal_read(path_to_file: &str) -> Result<Vec<String>, Box<dyn Error>> {
-    Ok(todo!())
+pub fn read(path_to_file: String) -> String {
+    fs::read_to_string(&path_to_file).expect("Cannot read this file.")
 }
 
-pub fn parse_json_config<T>(path_to_config: &str) -> T {
-
+pub fn parse_json_config(path_to_config: &str) -> Root {
+    let mut config: Root = serde_json::from_str(&read(path_to_config.to_string())).unwrap();
+    return config;
 }
