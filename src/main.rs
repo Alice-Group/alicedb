@@ -9,7 +9,10 @@ mod backer;
 mod executor;
 mod alice_fs;
 mod compression;
+mod misc;
 
+
+use misc::*;
 use compression::*;
 use executor::*;
 use commit_manager::*;
