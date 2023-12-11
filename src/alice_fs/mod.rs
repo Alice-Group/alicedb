@@ -6,6 +6,7 @@
 //!     [ ] - Type for Result<Vec<PathBuf>, Box<dyn Error>>.
 //!     [ ] - Comments for functions.
 //!     [ ] - New function that writes data to last line.
+//!     [ ] - Normal reading file.
 //!
 //! FIXME:
 //!     [ ] - `write_into_files`.
@@ -112,5 +113,13 @@ pub fn read_file(path_to_table: String) -> Result<Vec<Vec<String>>, Box<dyn Erro
         ret_lines.push(w);
     }
     Ok(ret_lines)
+
+}
+
+pub fn normal_read(path_to_file: &str) -> Result<Vec<String>, Box<dyn Error>> {
+    Ok(todo!())
+}
+
+pub fn parse_json_config<T>(path_to_config: &str) -> T {
 
 }

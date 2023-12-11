@@ -1,4 +1,5 @@
 use serde::{Serialize, Deserialize};
+use crate::log;
 
 #[derive(Serialize, Deserialize, Debug, Clone)]
 pub struct Alice_server_conf {
@@ -71,3 +72,4 @@ pub struct Root {
 	#[serde(rename = "alicedb_conf")]
 	pub alicedb_conf: Option<Alicedb_conf>,
 }
+
