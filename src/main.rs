@@ -18,5 +18,5 @@ use cacher::Cacher;
 
 
 fn main() {
-    //create_commits_file();
+    print_ascii_banner();
 }
