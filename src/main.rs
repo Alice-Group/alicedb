@@ -1,29 +1,32 @@
 #![allow(warnings)]
 
-use crate::conductor::Conductor;
-
-mod conductor;
-
-mod commit_manager;
-mod backer;
-mod executor;
 mod alice_fs;
-mod compression;
-mod misc;
-mod configurator; 
+mod configurator;
+mod engines;
 
-use configurator::*;
-use misc::*;
-use compression::*;
-use executor::*;
-use commit_manager::*;
-use crate::conductor::transaction::Transaction;
-use cacher::Cacher;
-use journalist::*;
 use alice_fs::*;
+use configurator::*;
 
 use std::env;
 
+use journalist::log;
+
+use engines::*;
+
+
+
+fn print_ascii_banner() {
+    println!("
+
+    ██   █    ▄█ ▄█▄    ▄███▄   ██▄   ███   
+    █ █  █    ██ █▀ ▀▄  █▀   ▀  █  █  █  █  
+    █▄▄█ █    ██ █   ▀  ██▄▄    █   █ █ ▀ ▄ 
+    █  █ ███▄ ▐█ █▄  ▄▀ █▄   ▄▀ █  █  █  ▄▀ 
+    █     ▀ ▐ ▀███▀  ▀███▀   ███▀  ███   
+    █                                     
+    ▀                                      
+    ");
+}
 
 
 fn main() {

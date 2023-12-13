@@ -7,13 +7,7 @@
     <cargoProject FILE="$PROJECT_DIR$/Cargo.toml" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6e8622a0-f16f-4b37-b042-08c5dc75f217" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/engines/csv.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cargo.toml" beforeDir="false" afterPath="$PROJECT_DIR$/Cargo.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/alice_fs/mod.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/alice_fs/mod.rs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.rs" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.rs" afterDir="false" />
-    </list>
+    <list default="true" id="6e8622a0-f16f-4b37-b042-08c5dc75f217" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -117,7 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701946524267</updated>
       <workItem from="1701946527510" duration="21418000" />
-      <workItem from="1702313981295" duration="163000" />
+      <workItem from="1702313981295" duration="613000" />
     </task>
     <servers />
   </component>

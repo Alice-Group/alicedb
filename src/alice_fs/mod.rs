@@ -4,35 +4,58 @@
 //! TODO:
 //!     [ ] - New names for functions.
 //!     [ ] - Type for Result<Vec<PathBuf>, Box<dyn Error>>.
-//!     [ ] - Comments for functions.
+//!     [+] - Comments for functions.
 //!     [ ] - New function that writes data to last line.
 //!     [ ] - Normal reading file.
+//!     [ ] - convert parse_json_config into T.
 //!
 //! FIXME:
-//!     [ ] - `write_into_files`.
+//!     [-] - `write_into_files` into engines.
 
-use std::fs::File;
-use std::io::prelude::*;
 use std::error::Error;
 use std::fs;
-use std::path::{PathBuf, Path};
-use std::fs::{OpenOptions};
+use std::fs::{File, OpenOptions};
+
+use std::io::prelude::*;
 use std::io::{self, prelude::*, BufReader, SeekFrom};
-use serde::{Deserialize};
+
+use std::path::PathBuf;
+
+use serde::Deserialize;
+
 use crate::configurator::Root;
 
+// <---------- CODE ---------->
 
-pub fn create_dir(dirname: &str) -> Result<(), Box<dyn Error>> {
-    match fs::create_dir(dirname) {
+
+type Res = Result<(), Box<dyn Error>>;
+
+
+// Creates directory.
+// 
+// Example:
+// 
+// ```rust
+//      alice_fs.create_dir("~/.config/alicedb");
+// ```
+pub fn create_dir(dirpath: &str) -> Res {
+    match fs::create_dir(dirpath) {
         Err(why) => println!("! {:?}", why.kind()),
-        Ok(_) => println!("Done!"),
-    };
+        Ok(_) => println!("Done"),
+    }; 
     Ok(())
 }
 
-pub fn list_dir(dirname: &str) -> Result<Vec<PathBuf>, Box<dyn Error>> {
+// List files in directory.
+//
+// Example:
+// 
+// ```rust
+//      alice_fs.list_dir("~/.config/alicedb");
+// ```
+pub fn list_dir(dirpath: &str) -> Result<Vec<PathBuf>, Box<dyn Error>> {
     let mut files: Vec<PathBuf> = Vec::new();
-    match fs::read_dir(dirname) {
+    match fs::read_dir(dirpath) {
         Err(why) => println!("! {:?}", why.kind()),
         Ok(paths) => for path in paths {
             files.push(path.unwrap().path());
@@ -41,86 +64,31 @@ pub fn list_dir(dirname: &str) -> Result<Vec<PathBuf>, Box<dyn Error>> {
     Ok(files)
 }
 
-
+// Creates or re-creates file.
+//
+// Example:
+//
+// ```rust
+//      alice_fs.create_file("~/.config/alicedb/data.txt");
+// ```
 pub fn create_file(filepath: &str) -> Result<File, Box<dyn Error>> {
-    Ok(File::options().read(true).write(true).create_new(true).open(&filepath)?)
+    Ok(File::options().read(true).write(true).create_new(true).open(filepath)?)
 }
 
 
-
-pub fn write_into_file(filepath: &str, data: String) {
-    let k = OpenOptions::new()
-        .write(true)
-        .create_new(true)
-        .append(true)
-        .open(&filepath);
-    match k {
-        Ok(mut file) => match writeln!(file, "{}", data) {
-            Err(e) => eprintln!("Couldn't write to file: {}", e),
-            Ok(_) => println!("data has been written.")
-        }
-        Err(why) => {
-            let mut file = OpenOptions::new()
-                .write(true)
-                .append(true)
-                .open(&filepath)
-                .unwrap();
-
-            if let Err(e) = writeln!(file, "{}", data) {
-                eprintln!("Couldn't write to file: {}", e);
-            };
-        }
-    }
+// Simple read some file and returns String.
+//
+// Example
+// ```rust
+//      alice_fs.read("path/to/config.json")
+// ```
+pub fn read(filepath: &str) -> String {
+    fs::read_to_string(filepath).expect("Cant read this file.")
 }
 
-pub fn into_field(path_to_table: String, field_name: &str, data: &str) -> io::Result<()> {
-    let mut file = OpenOptions::new().read(true).write(true).open(&path_to_table)?;
 
-    let mut reader = BufReader::new(&file);
-    let mut contents = String::new();
-    reader.read_to_string(&mut contents)?;
-
-    let mut lines: Vec<_> = contents.lines().map(|l| l.to_string()).collect();
-
-    for line in &mut lines {
-        if line.contains(field_name) {
-            let k = format!("{},{}", line.replace("\n", ""), data);
-            *line = k;
-        }
-    }
-
-    file.set_len(0)?;
-    file.seek(SeekFrom::Start(0))?;
-    file.write_all(lines.join("\n").as_bytes())?;
-
-    Ok(())
-}
-
-pub fn read_file(path_to_table: String) -> Result<Vec<Vec<String>>, Box<dyn Error>> {
-    let mut file = OpenOptions::new().read(true).write(false).open(&path_to_table)?;
-    let mut reader = BufReader::new(&file);
-    let mut contents = String::new();
-    reader.read_to_string(&mut contents)?;
-    let mut ret_lines: Vec<Vec<String>> = Vec::new();
-    let mut lines: Vec<_> = contents.lines().map(|l| l.to_string()).collect();
-
-    for i in &lines{
-        let mut k = i.split(",").collect::<Vec<&str>>();
-        let mut w = Vec::new();
-        for j in k {
-            w.push(j.to_string())
-        }
-        ret_lines.push(w);
-    }
-    Ok(ret_lines)
-
-}
-
-pub fn read(path_to_file: String) -> String {
-    fs::read_to_string(&path_to_file).expect("Cannot read this file.")
-}
-
+// Deserialize Json file into struct.
 pub fn parse_json_config(path_to_config: &str) -> Root {
-    let mut config: Root = serde_json::from_str(&read(path_to_config.to_string())).unwrap();
+    let mut config: Root = serde_json::from_str(&read(path_to_config)).unwrap();
     return config;
 }
